@@ -4,17 +4,18 @@ require('styles/main.scss');
 import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
-logTitle('Lexical This');
+logTitle('Enchanced Object Properties');
 /* coding examples */
-const person = {
-  name: 'Alex',
-  cars: ['Ferrary', 'Lambo'],
-  toString: function() {
-    // log(`${this.name} has ${this.cars}`)
-    this.cars.forEach(car => {
-      log(`${this.name} has ${car}`)
-    })
+
+const calculator = name => {
+  return {
+    name,
+    add: function(n1, n2) {
+      return n1 + n2
+    }
   }
 }
 
-person.toString();
+const calc = calculator('casio')
+log(calc.name)
+log(calc.add(10, 20))
