@@ -12,6 +12,7 @@ const names = ['Anna', 'Mariam', 'Joe', 'Mark', 'Matt'];
 // const mariam = names[1];
 // const joe = names[2];
 
-const [anna, mariam, joe] = names;
+const [anna, , joe, ...restOfNames] = names;
 
-log(`${anna} ${mariam} ${joe}`);
+log(`${anna} ${joe}`);
+log(restOfNames.length)
