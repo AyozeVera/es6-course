@@ -4,11 +4,8 @@ require('styles/main.scss');
 import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
-import Animal from './Animal'
-logTitle('Let Keyword');
+logTitle('Const Keyword');
 /* coding examples */
-for (let i = 0; i < 10; i++) {
-  log(i);
-}
-
-log(i);
+const name = 'Maria';
+name = {};
+name = 1;
