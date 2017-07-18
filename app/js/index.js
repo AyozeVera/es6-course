@@ -4,35 +4,19 @@ require('styles/main.scss');
 import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
-logTitle('Promises');
+logTitle('Promises & Fetch API');
 /* coding examples */
 
-const namesPromise = new Promise((resolve, reject) => {
-  setTimeout(()=>{
-    resolve(["Ana", "Jhon", "Ali"])
-  }, 3000)
+const getRandomUsers = n => {
+  const fetchRandomUsers = fetch(`https://randomuser.me/api/?results=${n}`)
+  fetchRandomUsers.then(response => {
+    response.json().then(randomUsers => {
+      randomUsers.results.forEach(user => {
+        const {gender, email} = user;
+        log(`${gender} - ${email}`)
+      })
+    })
+  })
+}
 
-  setTimeout(()=>{
-    reject("no data back from the server, there was an error")
-  }, 5000)
-})
-const surnamesPromise = new Promise((resolve, reject) => {
-  setTimeout(()=>{
-    resolve(["Williams", "Snow", "Mohamed"])
-  }, 3000)
-
-  setTimeout(()=>{
-    reject("no data back from the server, there was an error")
-  }, 5000)
-})
-
-Promise.all([namesPromise, surnamesPromise]).then(data => {
-  const [names, surnames] = data;
-  for (let i = 0; i < names.length; i++) {
-    const name = names[i]
-    const surname = surnames[i]
-    log(`${name} ${surname}`)
-  }
-}).catch(err => {
-  log(err)
-})
+getRandomUsers(10);
