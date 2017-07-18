@@ -27,14 +27,56 @@ class Animal {
   }
 }
 
-const bobby = new Animal("Bobby", 2);
-bobby.eat();
-bobby.sleep();
-bobby.logAge();
+class Dog extends Animal{
+  constructor(name, age, breed) {
+    super(name, age)
+    this.breed = breed
+  }
+
+  logBreed() {
+    log(`${this.name} is a ${this.breed}`)
+  }
+
+  logAgeFromDog() {
+    super.logAge()
+  }
+}
+
+class Cat extends Animal{
+  constructor(name, age) {
+    super(name, age)
+  }
+
+  logAge() {
+    log(this.age * 7)
+  }
+
+  logAgeFromCat() {
+    super.logAge()
+  }
+}
+
+const mike = new Dog("Mike", 4, "Bulldog")
+mike.logBreed();
+mike.logAgeFromDog();
+mike.eat();
+mike.sleep();
 
 log("---------------")
 
-const marshal = new Animal("Marshall", 3);
-marshal.eat();
-marshal.sleep();
-marshal.logAge();
+const botas = new Cat("Botas", 1)
+botas.logAge();
+botas.logAgeFromCat();
+
+
+// const bobby = new Animal("Bobby", 2);
+// bobby.eat();
+// bobby.sleep();
+// bobby.logAge();
+//
+// log("---------------")
+//
+// const marshal = new Animal("Marshall", 3);
+// marshal.eat();
+// marshal.sleep();
+// marshal.logAge();
