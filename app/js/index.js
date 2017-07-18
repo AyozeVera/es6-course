@@ -5,7 +5,10 @@ import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
 import Animal from './Animal'
-logTitle('Names Exports / Imports');
+logTitle('Let Keyword');
 /* coding examples */
-var animal = new Animal();
-log(animal.getClassType());
+for (let i = 0; i < 10; i++) {
+  log(i);
+}
+
+log(i);
