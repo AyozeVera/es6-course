@@ -4,14 +4,11 @@ require('styles/main.scss');
 import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
-logTitle('Const Keyword');
+logTitle('Template literals');
 /* coding examples */
-const person = {}
-person['name'] = "Maria"
+const name = "Anna"
+const country = "Spain"
+const age = 30
 
-log(person.name)
-
-const array = []
-array.push("Maria from Array")
-
-log(array[0])
+log("Name: " + name + " Country: " + country + " Age: " + age);
+log(`Name: ${name} Country: ${country} Age: ${age}`);
