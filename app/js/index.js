@@ -10,7 +10,7 @@ logTitle('Enchanced Object Properties');
 const calculator = name => {
   return {
     name,
-    add: function(n1, n2) {
+    add(n1, n2) {
       return n1 + n2
     }
   }
