@@ -4,85 +4,21 @@ require('styles/main.scss');
 import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
-logTitle('ES6 Classes');
+logTitle('Promises');
 /* coding examples */
 
-class Animal {
-  constructor(name, age) {
-    log(`${name} is an animal and was created`)
-    this.name = name;
-    this.age = age;
-  }
+const promise = new Promise((resolve, reject) => {
+  setTimeout(()=>{
+    resolve("data back from the server")
+  }, 3000)
 
-  static iAmAStaticMethod() {
-    log("I am a static method of an Animal Class")
-  }
+  setTimeout(()=>{
+    reject("no data back from the server, there was an error")
+  }, 5000)
+})
 
-  eat() {
-    log(`${this.name} is eating`);
-  }
-
-  sleep() {
-    log(`${this.name} is sleeping`);
-  }
-
-  logAge() {
-    log(`${this.name} is ${this.age} years old`);
-  }
-}
-
-class Dog extends Animal{
-  constructor(name, age, breed) {
-    super(name, age)
-    this.breed = breed
-  }
-
-  logBreed() {
-    log(`${this.name} is a ${this.breed}`)
-  }
-
-  logAgeFromDog() {
-    super.logAge()
-  }
-}
-
-class Cat extends Animal{
-  constructor(name, age) {
-    super(name, age)
-  }
-
-  logAge() {
-    log(this.age * 7)
-  }
-
-  logAgeFromCat() {
-    super.logAge()
-  }
-}
-
-Animal.iAmAStaticMethod()
-
-const mike = new Dog("Mike", 4, "Bulldog")
-mike.logBreed();
-mike.logAgeFromDog();
-mike.eat();
-mike.sleep();
-
-log("---------------")
-
-const botas = new Cat("Botas", 1)
-botas.logAge();
-botas.logAgeFromCat();
-
-
-// const bobby = new Animal("Bobby", 2);
-// bobby.eat();
-// bobby.sleep();
-// bobby.logAge();
-//
-// log("---------------")
-//
-// const marshal = new Animal("Marshall", 3);
-// marshal.eat();
-// marshal.sleep();
-// marshal.logAge();
+promise.then(res => {
+  log(res)
+}).catch(err => {
+  log(err)
+})
