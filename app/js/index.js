@@ -14,6 +14,10 @@ class Animal {
     this.age = age;
   }
 
+  static iAmAStaticMethod() {
+    log("I am a static method of an Animal Class")
+  }
+
   eat() {
     log(`${this.name} is eating`);
   }
@@ -55,6 +59,8 @@ class Cat extends Animal{
     super.logAge()
   }
 }
+
+Animal.iAmAStaticMethod()
 
 const mike = new Dog("Mike", 4, "Bulldog")
 mike.logBreed();
