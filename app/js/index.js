@@ -7,9 +7,18 @@ import { log, logTitle } from 'logger';
 logTitle('Promises');
 /* coding examples */
 
-const promise = new Promise((resolve, reject) => {
+const namesPromise = new Promise((resolve, reject) => {
   setTimeout(()=>{
-    resolve("data back from the server")
+    resolve(["Ana", "Jhon", "Ali"])
+  }, 3000)
+
+  setTimeout(()=>{
+    reject("no data back from the server, there was an error")
+  }, 5000)
+})
+const surnamesPromise = new Promise((resolve, reject) => {
+  setTimeout(()=>{
+    resolve(["Williams", "Snow", "Mohamed"])
   }, 3000)
 
   setTimeout(()=>{
@@ -17,8 +26,13 @@ const promise = new Promise((resolve, reject) => {
   }, 5000)
 })
 
-promise.then(res => {
-  log(res)
+Promise.all([namesPromise, surnamesPromise]).then(data => {
+  const [names, surnames] = data;
+  for (let i = 0; i < names.length; i++) {
+    const name = names[i]
+    const surname = surnames[i]
+    log(`${name} ${surname}`)
+  }
 }).catch(err => {
   log(err)
 })
