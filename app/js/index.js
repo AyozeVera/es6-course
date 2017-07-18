@@ -7,5 +7,10 @@ import { log, logTitle } from 'logger';
 logTitle('Function Default Parameters');
 /* coding examples */
 
-const calculatePay = (yearSalary, bonus = 0) => yearSalary + bonus;
+const calculatePay = (yearSalary, bonus = {
+  teamBonus: 0,
+  employeeBonus: 0
+}) => {
+  return yearSalary + bonus.teamBonus + bonus.employeeBonus;
+}
 log(calculatePay(22000, 10))
