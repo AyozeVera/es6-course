@@ -4,37 +4,8 @@ require('styles/main.scss');
 import $ from 'jquery';
 import { log, logTitle } from 'logger';
 /* your imports */
-logTitle('Object Destructuring');
+logTitle('Function Default Parameters');
 /* coding examples */
-const getUser = () => {
-  return {
-    name: 'John',
-    surname: 'Doe',
-    gender: 'male',
-    address: {
-      country: 'United States',
-      city: 'California',
-      postCode: 'CA',
-      fullAddress: {
-        doorNumber: 22,
-        street: 'LA st'
-      }
-    },
-    age: 29
-  }
-};
 
-const user = getUser();
-
-// const name = user.name;
-// const age = user.age;
-const country = user.address.country;
-const doorNumber = user.address.fullAddress.doorNumber;
-
-const {name : n, age: theAge, address: {country : theCountry}} = user;
-const {address:{fullAddress:{doorNumber: theDoorNumber}}} = user;
-
-log(n);
-log(theAge);
-log(theCountry);
-log(theDoorNumber);
+const calculatePay = (yearSalary, bonus = 0) => yearSalary + bonus;
+log(calculatePay(22000, 10))
